@@ -232,7 +232,7 @@ function HeroSection() {
   };
 
   return (
-    <section id="home" className="min-h-screen relative flex items-start justify-center overflow-hidden pt-[50vh] md:pt-[45vh] lg:pt-[60vh] xl:pt-[62vh]">
+    <section id="home" className="min-h-screen relative flex items-center justify-center overflow-hidden pt-20 md:pt-24">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Black Waves */}
@@ -303,72 +303,77 @@ function HeroSection() {
         </div>
       </div>
 
-      {/* Full-page background image */}
-      <div 
-        className="absolute inset-0 bg-no-repeat bg-center"
-        style={{ 
-          backgroundImage: `url('${imgAdobeExpressFile31}')`,
-          filter: 'grayscale(100%)',
-          backgroundSize: window.innerWidth < 768 ? '80%' : window.innerWidth < 1024 ? '60%' : '40%',
-          backgroundPosition: 'center 10%'
-        }}
-      />
-      
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-[#1f1f1f]/60" />
+      {/* Main Content Container */}
+      <div className="relative max-w-7xl mx-auto px-4 md:px-6 w-full z-10">
+        {/* Two Column Layout - Mobile Stack, Desktop Side-by-Side */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
 
-      <div className="relative max-w-7xl mx-auto px-4 md:px-6 w-full pb-12">
-        {/* Content - Centered */}
-        <div className="flex flex-col items-center text-center space-y-6 md:space-y-8 max-w-2xl mx-auto">
-          <div className="space-y-3 md:space-y-4">
-            <h2 className="font-['Inter',_sans-serif] font-bold text-[18px] md:text-[20px] lg:text-[24px] text-[#f8f7f9]">
-              HI, I'M KARL TOUSSAINT
-            </h2>
-            <ul className="space-y-2 md:space-y-3">
-              <li className="font-['Inter',_sans-serif] text-[16px] md:text-[20px] lg:text-[24px] text-[#f8f7f9]">
-                • Cybersecurity & AI Automation Consultant
-              </li>
-              <li className="font-['Inter',_sans-serif] text-[16px] md:text-[20px] lg:text-[24px] text-[#f8f7f9]">
-                • Web Developer
-              </li>
-              <li className="font-['Inter',_sans-serif] text-[16px] md:text-[20px] lg:text-[24px] text-[#f8f7f9]">
-                • Software Developer
-              </li>
-            </ul>
+          {/* Left Column - Text Content */}
+          <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 md:space-y-8">
+            <div className="space-y-3 md:space-y-4">
+              <h2 className="font-['Inter',_sans-serif] font-bold text-[24px] md:text-[32px] lg:text-[40px] xl:text-[48px] text-[#f8f7f9]">
+                HI, I'M KARL TOUSSAINT
+              </h2>
+              <ul className="space-y-2 md:space-y-3">
+                <li className="font-['Inter',_sans-serif] text-[18px] md:text-[22px] lg:text-[26px] xl:text-[30px] text-[#f8f7f9]">
+                  • Cybersecurity & AI Automation Consultant
+                </li>
+                <li className="font-['Inter',_sans-serif] text-[18px] md:text-[22px] lg:text-[26px] xl:text-[30px] text-[#f8f7f9]">
+                  • Web Developer
+                </li>
+                <li className="font-['Inter',_sans-serif] text-[18px] md:text-[22px] lg:text-[26px] xl:text-[30px] text-[#f8f7f9]">
+                  • Software Developer
+                </li>
+              </ul>
+            </div>
+
+            {/* CTA Buttons - Stack vertically on mobile, horizontal on desktop */}
+            <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 w-full lg:w-auto">
+              <button
+                onClick={scrollToAbout}
+                className="group border-2 border-[#f8f7f9] px-6 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl transition-all duration-300 hover:bg-[#f8f7f9] hover:text-[#1f1f1f] text-center w-full lg:w-auto"
+              >
+                <span className="font-['Inter',_sans-serif] font-bold text-[16px] md:text-[18px] lg:text-[20px] text-[#f8f7f9] group-hover:text-[#1f1f1f] transition-colors duration-300 whitespace-nowrap">
+                  ABOUT ME
+                </span>
+              </button>
+
+              <button
+                onClick={scrollToExperience}
+                className="group border-2 border-[#f8f7f9] px-6 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl transition-all duration-300 hover:bg-[#f8f7f9] hover:text-[#1f1f1f] text-center w-full lg:w-auto"
+              >
+                <span className="font-['Inter',_sans-serif] font-bold text-[16px] md:text-[18px] lg:text-[20px] text-[#f8f7f9] group-hover:text-[#1f1f1f] transition-colors duration-300 whitespace-nowrap">
+                  VIEW MY PROJECTS
+                </span>
+              </button>
+
+              <button
+                onClick={() => {
+                  const element = document.getElementById('payments');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="group border-2 border-[#f8f7f9] px-6 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl transition-all duration-300 hover:bg-[#f8f7f9] hover:text-[#1f1f1f] text-center w-full lg:w-auto"
+              >
+                <span className="font-['Inter',_sans-serif] font-bold text-[16px] md:text-[18px] lg:text-[20px] text-[#f8f7f9] group-hover:text-[#1f1f1f] transition-colors duration-300 whitespace-nowrap">
+                  PAYMENTS
+                </span>
+              </button>
+            </div>
           </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-            <button 
-              onClick={scrollToAbout}
-              className="group border-2 border-[#f8f7f9] px-6 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl transition-all duration-300 hover:bg-[#f8f7f9] hover:text-[#1f1f1f] text-center"
-            >
-              <span className="font-['Inter',_sans-serif] font-bold text-[16px] md:text-[20px] lg:text-[24px] text-[#f8f7f9] group-hover:text-[#1f1f1f] transition-colors duration-300">
-                ABOUT ME
-              </span>
-            </button>
-            
-            <button 
-              onClick={scrollToExperience}
-              className="group border-2 border-[#f8f7f9] px-6 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl transition-all duration-300 hover:bg-[#f8f7f9] hover:text-[#1f1f1f]"
-            >
-              <span className="font-['Inter',_sans-serif] font-bold text-[16px] md:text-[20px] lg:text-[24px] text-[#f8f7f9] group-hover:text-[#1f1f1f] transition-colors duration-300">
-                VIEW MY PROJECTS
-              </span>
-            </button>
-            
-            <button 
-              onClick={() => {
-                const element = document.getElementById('payments');
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="group border-2 border-[#f8f7f9] px-6 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl transition-all duration-300 hover:bg-[#f8f7f9] hover:text-[#1f1f1f] text-center"
-            >
-              <span className="font-['Inter',_sans-serif] font-bold text-[16px] md:text-[20px] lg:text-[24px] text-[#f8f7f9] group-hover:text-[#1f1f1f] transition-colors duration-300">
-                PAYMENTS
-              </span>
-            </button>
+
+          {/* Right Column - Profile Image */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[450px] xl:h-[450px]">
+              <img
+                src={imgAdobeExpressFile31}
+                alt="Karl Toussaint"
+                className="w-full h-full object-cover rounded-2xl grayscale"
+              />
+              {/* Optional subtle glow effect */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-[#1f1f1f]/40 to-transparent pointer-events-none" />
+            </div>
           </div>
         </div>
       </div>
