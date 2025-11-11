@@ -1,17 +1,3 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
-  "installCommand": "npm install",
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./",
-  "env": {
-    "SUPABASE_URL": "@supabase_url",
-    "SUPABASE_ANON_KEY": "@supabase_anon_key",
-    "SUPABASE_SERVICE_ROLE_KEY": "@supabase_service_role_key",
-    "STRIPE_SECRET_KEY": "@stripe_secret_key",
-    "RESEND_API_KEY": "@resend_api_key",
-    "KARL_EMAIL": "@karl_email",
-    "ADMIN_USERNAME": "@admin_username",
-    "ADMIN_PASSWORD": "@admin_password"
-  }
+  "framework": "vite"
 }
