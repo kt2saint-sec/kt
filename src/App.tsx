@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { PaymentSection } from './components/PaymentSection';
 import svgPaths from "./imports/svg-6sovak61ez";
 import imgAdobeExpressFile31 from "figma:asset/24fc04f71f59cbd09402a9281c64cb88198e3a12.png";
 import logoKarl from "figma:asset/a15e50d78d65775af1af53d17931f664763bc13b.png";
@@ -13,6 +14,7 @@ function Navigation() {
     { id: 'about', label: 'About me' },
     { id: 'experience', label: 'Experience' },
     { id: 'certifications', label: 'Certifications' },
+    { id: 'payments', label: 'Payments' },
     { id: 'contacts', label: 'Contacts' }
   ];
 
@@ -322,9 +324,17 @@ function HeroSection() {
             <h2 className="font-['Poppins:Bold',_sans-serif] text-[18px] md:text-[20px] lg:text-[24px] text-[#f8f7f9]">
               HI, I'M KARL TOUSSAINT
             </h2>
-            <h1 className="font-['Poppins:Bold',_sans-serif] text-[28px] md:text-[40px] lg:text-[56px] xl:text-[72px] leading-[1.1] text-[#f8f7f9]">
-              Cybersecurity & AI Automation Consultant
-            </h1>
+            <ul className="space-y-2 md:space-y-3">
+              <li className="font-['Poppins:Regular',_sans-serif] text-[16px] md:text-[20px] lg:text-[24px] text-[#f8f7f9]">
+                • Cybersecurity & AI Automation Consultant
+              </li>
+              <li className="font-['Poppins:Regular',_sans-serif] text-[16px] md:text-[20px] lg:text-[24px] text-[#f8f7f9]">
+                • Web Developer
+              </li>
+              <li className="font-['Poppins:Regular',_sans-serif] text-[16px] md:text-[20px] lg:text-[24px] text-[#f8f7f9]">
+                • Software Developer
+              </li>
+            </ul>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
@@ -343,6 +353,20 @@ function HeroSection() {
             >
               <span className="font-['Poppins:Bold',_sans-serif] text-[16px] md:text-[20px] lg:text-[24px] text-[#f8f7f9] group-hover:text-[#1f1f1f] transition-colors duration-300">
                 VIEW MY PROJECTS
+              </span>
+            </button>
+            
+            <button 
+              onClick={() => {
+                const element = document.getElementById('payments');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="group border-2 border-[#f8f7f9] px-6 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl transition-all duration-300 hover:bg-[#f8f7f9] hover:text-[#1f1f1f] text-center"
+            >
+              <span className="font-['Poppins:Bold',_sans-serif] text-[16px] md:text-[20px] lg:text-[24px] text-[#f8f7f9] group-hover:text-[#1f1f1f] transition-colors duration-300">
+                PAYMENTS
               </span>
             </button>
           </div>
@@ -572,6 +596,11 @@ function CertificationsSection() {
       organization: ""
     },
     {
+      title: "AI Prompt Engineering",
+      year: "2024",
+      organization: "LinkedIn Learning"
+    },
+    {
       title: "Data-Driven Learning Design",
       year: "2024",
       organization: "LinkedIn Learning"
@@ -654,6 +683,7 @@ export default function App() {
         <ExperienceSection />
         <CertificationsSection />
         <ContactsSection />
+        <PaymentSection />
       </main>
     </div>
   );
