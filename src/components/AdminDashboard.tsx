@@ -213,8 +213,8 @@ export function AdminDashboard({ adminToken }: AdminDashboardProps) {
 
             <Card className="p-6 bg-white/5 border-white/10">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-indigo-500/10 rounded-lg">
-                  <FileText className="h-6 w-6 text-indigo-500" />
+                <div className="p-3 bg-slate-800/25 rounded-lg">
+                  <FileText className="h-6 w-6 text-slate-300" />
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Total Invoices</p>

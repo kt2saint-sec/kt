@@ -3,28 +3,28 @@ interface TechBadgeProps {
 }
 
 const techColors: Record<string, string> = {
-  'React': 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-  'Next.js': 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-  'TypeScript': 'bg-blue-600/10 text-blue-500 border-blue-600/20',
-  'Python': 'bg-green-500/10 text-green-400 border-green-500/20',
-  'FastAPI': 'bg-green-600/10 text-green-500 border-green-600/20',
-  'Docker': 'bg-purple-500/10 text-purple-400 border-purple-500/20',
-  'Redis': 'bg-red-500/10 text-red-400 border-red-500/20',
-  'Linux': 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
-  'SSH': 'bg-orange-500/10 text-orange-400 border-orange-500/20',
-  'UFW': 'bg-orange-600/10 text-orange-500 border-orange-600/20',
-  'AI/ML': 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
-  'Cloud Infrastructure': 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
-  'Statistics': 'bg-pink-500/10 text-pink-400 border-pink-500/20',
-  'CLI Tools': 'bg-gray-500/10 text-gray-400 border-gray-500/20',
-  'JSONL': 'bg-gray-600/10 text-gray-500 border-gray-600/20',
-  'Bash': 'bg-slate-500/10 text-slate-400 border-slate-500/20',
-  'Performance Tuning': 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-  'Security': 'bg-red-600/10 text-red-500 border-red-600/20',
+  'React': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'Next.js': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'TypeScript': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'Python': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'FastAPI': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'Docker': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'Redis': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'Linux': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'SSH': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'UFW': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'AI/ML': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'Cloud Infrastructure': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'Statistics': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'CLI Tools': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'JSONL': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'Bash': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'Performance Tuning': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+  'Security': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
 };
 
 export function TechBadge({ tech }: TechBadgeProps) {
-  const colorClass = techColors[tech] || 'bg-gray-500/10 text-gray-400 border-gray-500/20';
+  const colorClass = techColors[tech] || 'bg-slate-800/25 text-slate-300 border-slate-600/30';
 
   return (
     <span

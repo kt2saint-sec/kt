@@ -22,10 +22,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   // Status badge colors
   const statusColors = {
-    'Completed': 'bg-green-500/10 text-green-400 border-green-500/20',
-    'In Progress': 'bg-orange-500/10 text-orange-400 border-orange-500/20',
-    'In Closed Beta': 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-    'Archived': 'bg-gray-500/10 text-gray-400 border-gray-500/20',
+    'Completed': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+    'In Progress': 'bg-slate-700/30 text-slate-300 border-slate-500/30',
+    'In Closed Beta': 'bg-slate-800/25 text-slate-300 border-slate-600/30',
+    'Archived': 'bg-slate-700/20 text-slate-400 border-slate-600/25',
   };
 
   return (
@@ -126,8 +126,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
-                    bg-blue-500/10 text-blue-400 border border-blue-500/20
-                    hover:bg-blue-500/20 hover:border-blue-500/40
+                    bg-slate-800/25 text-slate-300 border border-slate-600/30
+                    hover:bg-slate-800/35 hover:border-slate-600/45
                     transition-all duration-300"
                 >
                   <ExternalLink className="w-4 h-4" />
@@ -140,8 +140,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
-                    bg-white/5 text-gray-300 border border-white/10
-                    hover:bg-white/10 hover:border-white/20
+                    bg-slate-800/20 text-slate-300 border border-slate-600/25
+                    hover:bg-slate-800/30 hover:border-slate-600/35
                     transition-all duration-300"
                 >
                   <Github className="w-4 h-4" />
@@ -154,8 +154,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
-                    bg-purple-500/10 text-purple-400 border border-purple-500/20
-                    hover:bg-purple-500/20 hover:border-purple-500/40
+                    bg-slate-800/25 text-slate-300 border border-slate-600/30
+                    hover:bg-slate-800/35 hover:border-slate-600/45
                     transition-all duration-300"
                 >
                   <ExternalLink className="w-4 h-4" />
@@ -171,7 +171,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       {featured && (
         <div className="absolute top-4 right-4">
           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
-            bg-purple-500/20 text-purple-400 border border-purple-500/30 backdrop-blur-sm">
+            bg-slate-700/30 text-slate-300 border border-slate-500/35 backdrop-blur-sm">
             Featured
           </span>
         </div>
