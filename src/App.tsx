@@ -15,8 +15,6 @@ function Navigation() {
     { id: 'about', label: 'About me' },
     { id: 'experience', label: 'Experience' },
     { id: 'projects', label: 'Projects' },
-    { id: 'certifications', label: 'Certifications' },
-    { id: 'payments', label: 'Payments' },
     { id: 'contacts', label: 'Contacts' }
   ];
 
@@ -107,19 +105,19 @@ function Navigation() {
           <div className="hidden lg:flex items-center gap-4 xl:gap-6">
             <div className="h-14 w-px bg-[#f8f7f9]" />
             <div className="flex gap-4 xl:gap-6">
-              <SocialIcon type="instagram" />
-              <SocialIcon type="x" />
-              <SocialIcon type="facebook" />
-              <SocialIcon type="github" />
+              <SocialIcon type="instagram" href="https://www.instagram.com/k2saint.sec/" />
+              <SocialIcon type="x" href="https://x.com/k2saint_sec" />
+              <SocialIcon type="facebook" href="https://www.facebook.com/k2saint.sec" />
+              <SocialIcon type="github" href="https://github.com/kt2saint-sec" />
             </div>
           </div>
 
           {/* Social Icons - Mobile */}
           <div className="flex lg:hidden gap-4">
-            <SocialIcon type="instagram" />
-            <SocialIcon type="x" />
-            <SocialIcon type="facebook" />
-            <SocialIcon type="github" />
+            <SocialIcon type="instagram" href="https://www.instagram.com/k2saint.sec/" />
+            <SocialIcon type="x" href="https://x.com/k2saint_sec" />
+            <SocialIcon type="facebook" href="https://www.facebook.com/k2saint.sec" />
+            <SocialIcon type="github" href="https://github.com/kt2saint-sec" />
           </div>
         </div>
 
@@ -146,7 +144,7 @@ function Navigation() {
   );
 }
 
-function SocialIcon({ type }: { type: 'instagram' | 'x' | 'facebook' | 'github' }) {
+function SocialIcon({ type, href }: { type: 'instagram' | 'x' | 'facebook' | 'github'; href: string }) {
   const getPath = () => {
     if (type === 'instagram') {
       return (
@@ -210,11 +208,16 @@ function SocialIcon({ type }: { type: 'instagram' | 'x' | 'facebook' | 'github' 
   };
 
   return (
-    <button className="text-[#f8f7f9] hover:text-[#f8f7f9]/80 transition-colors duration-200">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-[#f8f7f9] hover:text-[#f8f7f9]/80 transition-colors duration-200"
+    >
       <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24">
         {getPath()}
       </svg>
-    </button>
+    </a>
   );
 }
 
@@ -348,20 +351,6 @@ function HeroSection() {
                   VIEW MY PROJECTS
                 </span>
               </button>
-
-              <button
-                onClick={() => {
-                  const element = document.getElementById('payments');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="group border-2 border-[#f8f7f9] px-6 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl transition-all duration-300 hover:bg-[#f8f7f9] hover:text-[#1f1f1f] text-center w-full lg:w-auto"
-              >
-                <span className="font-['Inter',_sans-serif] font-bold text-[16px] md:text-[18px] lg:text-[20px] text-[#f8f7f9] group-hover:text-[#1f1f1f] transition-colors duration-300 whitespace-nowrap">
-                  PAYMENTS
-                </span>
-              </button>
             </div>
           </div>
 
@@ -417,161 +406,17 @@ function AboutSection() {
 }
 
 function ExperienceSection() {
-  const experiences = [
-    {
-      title: "Principal Owner",
-      company: "Central Florida Cybersecurity Consulting",
-      period: "Mar 2025 – Present",
-      location: "Remote",
-      responsibilities: [
-        "Developing custom AI-enhanced security solutions for small businesses.",
-        "Implementing Suricata-based intrusion detection, pfSense firewalls, and network segmentation.",
-        "Onboarded initial clients by deploying secure perimeter firewalls and strengthening endpoint protections."
-      ]
-    },
-    {
-      title: "Founder & Owner",
-      company: "ThreadVibe (Custom Apparel & DTF Printing)",
-      period: "May 2024 – Jun 2025",
-      location: "Remote",
-      responsibilities: [
-        "Designed and managed full-cycle DTF printing systems using modified Epson hardware.",
-        "Integrated custom software workflows for automated color management and printer control.",
-        "Generated $12K annual revenue and delivered personalized design solutions to over 200 clients."
-      ]
-    },
-    {
-      title: "Sales Trainer",
-      company: "Westgate Resorts",
-      period: "May 2023 – May 2024",
-      location: "Orlando, FL",
-      responsibilities: [
-        "Led training programs across five departments (20–45 participants each).",
-        "Created and implemented data-driven scripts and sales workflows improving close ratios."
-      ]
-    },
-    {
-      title: "Sales Professional",
-      company: "Holiday Inn Club Vacations",
-      period: "May 2024 – Jul 2024",
-      location: "Orlando, FL",
-      responsibilities: [
-        "Utilized Salesforce CRM analytics to refine conversion strategies and sales funnel efficiency."
-      ]
-    },
-    {
-      title: "Customer Experience Specialist",
-      company: "Bluegreen Vacations",
-      period: "Mar 2022 – Oct 2022",
-      location: "Remote",
-      responsibilities: [
-        "Delivered high-volume client support with strong de-escalation and service recovery results."
-      ]
-    },
-    {
-      title: "Outside Sales Representative",
-      company: "Florida Energy Water & Air",
-      period: "Apr 2020 – Jan 2022",
-      location: "Orlando, FL",
-      responsibilities: [
-        "Surpassed 130% of quota and earned Commander's Club honors.",
-        "Designed field-based canvassing systems that increased lead flow during shortages."
-      ]
-    },
-    {
-      title: "Sales & Customer Engagement Roles",
-      company: "Hilton Worldwide | Wyndham Destinations | Holiday Inn Club Vacations",
-      period: "2014 – 2019",
-      location: "Various Locations",
-      responsibilities: [
-        "Consistently ranked in the top 10% for conversion and revenue performance.",
-        "Mentored new hires and improved onboarding speed by 20%."
-      ]
-    }
-  ];
-
   return (
     <section id="experience" className="py-12 md:py-16 lg:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <h2 className="font-['Inter',_sans-serif] font-bold text-[48px] md:text-[64px] lg:text-[80px] xl:text-[96px] text-[#f8f7f9] mb-8 md:mb-12 text-center">
           Experience
         </h2>
-        
-        <div className="space-y-8 md:space-y-12 max-w-4xl mx-auto">
-          {experiences.map((exp, index) => (
-            <div key={index} className="text-center">
-              <h3 className="font-['Inter',_sans-serif] font-extrabold text-[18px] md:text-[22px] lg:text-[26px] text-[rgba(248,247,249,0.5)] mb-1">
-                {exp.title}
-              </h3>
-              <h4 className="font-['Inter',_sans-serif] font-semibold text-[16px] md:text-[20px] lg:text-[24px] text-[rgba(248,247,249,0.5)] mb-1">
-                {exp.company}
-              </h4>
-              <p className="font-['Inter',_sans-serif] font-extralight text-[14px] md:text-[18px] lg:text-[22px] text-[rgba(248,247,249,0.5)] mb-3">
-                {exp.location} | {exp.period}
-              </p>
-              <ul className="space-y-2 text-center">
-                {exp.responsibilities.map((resp, idx) => (
-                  <li key={idx} className="font-['Inter',_sans-serif] text-[14px] md:text-[18px] lg:text-[22px] text-[rgba(248,247,249,0.5)] leading-[1.5]">
-                    {resp}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
-
-function CertificationsSection() {
-  const certifications = [
-    {
-      title: "CompTIA Security+",
-      year: "Expected Q1 2026",
-      organization: ""
-    },
-    {
-      title: "CompTIA Network+",
-      year: "Expected Q2 2026",
-      organization: ""
-    },
-    {
-      title: "AI Prompt Engineering",
-      year: "2024",
-      organization: "LinkedIn Learning"
-    },
-    {
-      title: "Data-Driven Learning Design",
-      year: "2024",
-      organization: "LinkedIn Learning"
-    }
-  ];
-
-  return (
-    <section id="certifications" className="py-12 md:py-16 lg:py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <h2 className="font-['Inter',_sans-serif] font-bold text-[48px] md:text-[64px] lg:text-[80px] xl:text-[96px] text-[#f8f7f9] mb-8 md:mb-12 text-center">
-          Certifications
-        </h2>
-        
-        <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
-          {certifications.map((cert, index) => (
-            <div key={index} className="text-center">
-              <h3 className="font-['Inter',_sans-serif] font-extrabold text-[16px] md:text-[20px] lg:text-[24px] text-[rgba(248,247,249,0.5)] mb-1 break-words">
-                {cert.title}
-              </h3>
-              <p className="font-['Inter',_sans-serif] font-extralight text-[14px] md:text-[18px] lg:text-[24px] text-[rgba(248,247,249,0.5)] mb-2">
-                {cert.year}
-              </p>
-              {cert.organization && (
-                <p className="font-['Inter',_sans-serif] font-medium text-[14px] md:text-[18px] lg:text-[24px] text-[rgba(248,247,249,0.5)]">
-                  {cert.organization}
-                </p>
-              )}
-            </div>
-          ))}
+        <div className="max-w-4xl mx-auto">
+          <p className="font-['Inter',_sans-serif] text-[16px] md:text-[20px] lg:text-[24px] text-[rgba(248,247,249,0.5)] leading-[1.5] text-center">
+            I started in sales and stayed long enough to learn the part most people miss: top performance isn't charisma, it's systems. Over two decades I worked across hospitality, vacation ownership, and outside sales roles where results are public and the margin for error is small. I consistently ranked near the top, then moved into training and process leadership because the real win wasn't one great month, it was building a machine that keeps winning: better scripts, tighter qualification, cleaner handoffs, and coaching that turns instincts into repeatable behaviors. Then I took that same "build the machine" mindset into tech. Over the past three years I've gone deep on Linux, networking, security hardening, AI-driven automation & Software Development, and DTF Printing, treating it like a craft: breaking a problems down, spec it, measure it, and ship in modules you can trust. I now run a DTF Printing business, and I'm shipping FuturePrintAI, allowing the same concept of turning your vision into reality including automated image generation, graphics editing via text, customized AI assistant that assists and auto optimizes color gamuts, allowing anyone like myself with a vision to make it come to fruition, but in minutes with a product that makes production work faster, safer, and more consistent.
+          </p>
         </div>
       </div>
     </section>
@@ -580,7 +425,7 @@ function CertificationsSection() {
 
 function ContactsSection() {
   return (
-    <section id="contacts" className="py-12 md:py-16 lg:py-20 relative pb-16">
+    <section id="contacts" className="py-12 md:py-16 lg:py-20 relative min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <h2 className="font-['Inter',_sans-serif] font-bold text-[48px] md:text-[64px] lg:text-[80px] xl:text-[96px] text-[#f8f7f9] mb-8 md:mb-12 text-center">
           Contacts
@@ -600,13 +445,15 @@ function ContactsSection() {
           </div>
           <div className="flex flex-col items-center gap-2">
             <span className="font-['Inter',_sans-serif] font-extrabold text-[16px] md:text-[20px] lg:text-[24px] text-[rgba(248,247,249,0.5)]">
-              Phone
+              Telegram
             </span>
-            <a 
-              href="tel:+16892454250"
+            <a
+              href="https://t.me/FUTUREPRINTAI"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-['Inter',_sans-serif] font-medium text-[16px] md:text-[20px] lg:text-[24px] text-[rgba(248,247,249,0.5)] hover:text-[#f8f7f9] transition-colors"
             >
-              689-245-4250
+              @FUTUREPRINTAI
             </a>
           </div>
         </div>
@@ -624,9 +471,7 @@ export default function App() {
         <AboutSection />
         <ExperienceSection />
         <ProjectsSection />
-        <CertificationsSection />
         <ContactsSection />
-        <PaymentSection />
       </main>
     </div>
   );

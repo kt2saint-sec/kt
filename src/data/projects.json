@@ -23,7 +23,6 @@
       "period": "12/2024 — current",
       "description": "Statistical project planning tool using Program Evaluation and Review Technique (PERT) with empirical self-calibration for accurate time estimation.",
       "techStack": ["Python", "Statistics", "CLI Tools", "JSONL"],
-      "image": "pert-system.png",
       "logo": "github-logo.svg",
       "links": {
         "github": "https://github.com/kt2saint-sec/pert-calibration-system"
@@ -39,6 +38,7 @@
       "description": "High-performance caching system optimization achieving 3x throughput improvement through configuration tuning and monitoring.",
       "techStack": ["Redis", "Docker", "Bash", "Performance Tuning"],
       "image": "redis-logo.svg",
+      "logo": "github-logo.svg",
       "links": {
         "github": "https://github.com/kt2saint-sec/redis-optimization"
       },
@@ -52,7 +52,7 @@
       "period": "10/2024 — 12/2024",
       "description": "Comprehensive security configuration including SSH hardening, firewall rules (UFW), and secure credential management using GNOME Keyring.",
       "techStack": ["Linux", "SSH", "UFW", "Security"],
-      "image": "github-logo.svg",
+      "logo": "github-logo.svg",
       "links": {
         "github": "https://github.com/kt2saint-sec/security-hardening"
       },

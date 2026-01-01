@@ -113,7 +113,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {logo && (
               <img
                 src={logo}
-                alt={`${title} logo`}
+                alt=""
                 className="h-8 object-contain"
               />
             )}
