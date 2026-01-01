@@ -24,6 +24,7 @@
       "description": "Statistical project planning tool using Program Evaluation and Review Technique (PERT) with empirical self-calibration for accurate time estimation.",
       "techStack": ["Python", "Statistics", "CLI Tools", "JSONL"],
       "image": "pert-system.png",
+      "logo": "github-logo.svg",
       "links": {
         "github": "https://github.com/kt2saint-sec/pert-calibration-system"
       },
