@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { PaymentSection } from './components/PaymentSection';
+import { ProjectsSection } from './components/ProjectsSection';
 import svgPaths from "./imports/svg-6sovak61ez";
 import imgAdobeExpressFile31 from "./assets/24fc04f71f59cbd09402a9281c64cb88198e3a12.png";
 import logoKarl from "./assets/a15e50d78d65775af1af53d17931f664763bc13b.png";
@@ -13,6 +14,7 @@ function Navigation() {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About me' },
     { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
     { id: 'certifications', label: 'Certifications' },
     { id: 'payments', label: 'Payments' },
     { id: 'contacts', label: 'Contacts' }
@@ -522,71 +524,6 @@ function ExperienceSection() {
   );
 }
 
-function ProjectsSection() {
-  const projects = [
-    {
-      title: "Energic - EV charging station management system",
-      period: "07/2024 — current",
-      description: "Energic provides a comprehensive and user-friendly EV charging station management system (CSMS) that helps with Real time locating, scheduling, and managing charging stations and maintenance alerts."
-    },
-    {
-      title: "Product Roadmap for an Online Grocery Delivery Platform",
-      period: "06/2024 — 07/2024",
-      description: "A 12-month roadmap for an online grocery delivery platform that can achieve significant growth, enhance customer satisfaction, and establish itself as a market leader. This strategy ensures a balanced focus on user experience, operational efficiency, and continuous innovation."
-    },
-    {
-      title: "IPL Best XI project",
-      period: "05/2023- 07/2023",
-      description: "A python project to find IPL Best XI by Involving Players from All 10 Teams of IPL 2023 season, by analysing and understanding the various factors that influence team selection and to develop effective strategies for selecting IPL Best XI"
-    },
-    {
-      title: "Market Analysis",
-      period: "03/2023 — 05/2023",
-      description: "A python project to find IPL Best XI by Involving Players from All 10 Teams of IPL 2023 season, by analysing and understanding the various factors that influence team selection and to develop effective strategies for selecting IPL Best XI"
-    },
-    {
-      title: "Financial Analysis",
-      period: "02/2023 — 04/2023",
-      description: "Analysed the past 5 years financial statements of Jj associates to understand the business's financial health and performance. Identified trends, compared against industry benchmarks, and made recommendations for improvements"
-    },
-    {
-      title: "Conducted User Research",
-      period: "02/2023 — 04/2024",
-      description: "Performed user research to understand the needs, preferences, and behaviours of users. Used the research findings understand, what kind of design and feature improvements are expected by users in the next generation iPhone line-up."
-    },
-    {
-      title: "An efficient image authentication based on hamming code",
-      period: "07/2016 — 05/2017",
-      description: "This presents the emerging technique for image authentication based on hamming coding by combining Hamming code technique, Torus auto-morphism and bit rotation"
-    }
-  ];
-
-  return (
-    <section id="projects" className="py-12 md:py-16 lg:py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <h2 className="font-['Inter',_sans-serif] font-bold text-[48px] md:text-[64px] lg:text-[80px] xl:text-[96px] text-[#f8f7f9] mb-8 md:mb-12 text-center">
-          Projects
-        </h2>
-        
-        <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
-          {projects.map((project, index) => (
-            <div key={index} className="text-center">
-              <h3 className="font-['Inter',_sans-serif] font-extrabold text-[16px] md:text-[20px] lg:text-[24px] text-[rgba(248,247,249,0.5)] mb-1">
-                {project.title}
-              </h3>
-              <p className="font-['Inter',_sans-serif] font-extralight text-[14px] md:text-[18px] lg:text-[24px] text-[rgba(248,247,249,0.5)] mb-2 md:mb-3">
-                {project.period}
-              </p>
-              <p className="font-['Inter',_sans-serif] font-medium text-[14px] md:text-[18px] lg:text-[24px] text-[rgba(248,247,249,0.5)] leading-[1.5]">
-                {project.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function CertificationsSection() {
   const certifications = [
@@ -686,6 +623,7 @@ export default function App() {
         <HeroSection />
         <AboutSection />
         <ExperienceSection />
+        <ProjectsSection />
         <CertificationsSection />
         <ContactsSection />
         <PaymentSection />

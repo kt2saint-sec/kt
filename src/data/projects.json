@@ -1,0 +1,62 @@
+{
+  "projects": [
+    {
+      "id": "futureprint-ai",
+      "title": "FuturePrintAI.com",
+      "category": "Web",
+      "period": "Current",
+      "description": "AI-powered design and printing platform enabling creative professionals to transform ideas into physical products with intelligent automation.",
+      "techStack": ["Next.js", "FastAPI", "AI/ML", "Cloud Infrastructure"],
+      "image": "futureprint-hero.png",
+      "video": "/assets/futureprint-demo.mp4",
+      "logo": "/assets/futureprint-logo.png",
+      "links": {
+        "live": "https://futureprintai.com"
+      },
+      "featured": true,
+      "status": "In Closed Beta"
+    },
+    {
+      "id": "pert-calibration",
+      "title": "PERT Calibration System",
+      "category": "Development",
+      "period": "12/2024 — current",
+      "description": "Statistical project planning tool using Program Evaluation and Review Technique (PERT) with empirical self-calibration for accurate time estimation.",
+      "techStack": ["Python", "Statistics", "CLI Tools", "JSONL"],
+      "image": "pert-system.png",
+      "links": {
+        "github": "https://github.com/kt2saint-sec/pert-calibration-system"
+      },
+      "featured": false,
+      "status": "Completed"
+    },
+    {
+      "id": "redis-optimization",
+      "title": "Redis Performance Optimization",
+      "category": "Development",
+      "period": "11/2024 — 12/2024",
+      "description": "High-performance caching system optimization achieving 3x throughput improvement through configuration tuning and monitoring.",
+      "techStack": ["Redis", "Docker", "Bash", "Performance Tuning"],
+      "image": "redis-logo.svg",
+      "links": {
+        "github": "https://github.com/kt2saint-sec/redis-optimization"
+      },
+      "featured": false,
+      "status": "Completed"
+    },
+    {
+      "id": "security-hardening",
+      "title": "System Security Hardening",
+      "category": "Development",
+      "period": "10/2024 — 12/2024",
+      "description": "Comprehensive security configuration including SSH hardening, firewall rules (UFW), and secure credential management using GNOME Keyring.",
+      "techStack": ["Linux", "SSH", "UFW", "Security"],
+      "image": "github-logo.svg",
+      "links": {
+        "github": "https://github.com/kt2saint-sec/security-hardening"
+      },
+      "featured": false,
+      "status": "Completed"
+    }
+  ]
+}
