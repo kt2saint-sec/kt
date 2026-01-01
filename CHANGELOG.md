@@ -7,6 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-01-01
+
+### Added
+- **Skip to Main Content Link**: Industry-standard accessibility feature
+  - Visually hidden but keyboard-focusable (sr-only with focus styles)
+  - Allows keyboard users to bypass navigation and jump directly to content
+  - Implements WCAG 2.1 best practice for keyboard navigation
+
+### Changed
+- **Social Media Icons**: Added descriptive ARIA labels for screen readers
+  - Instagram: "Visit Instagram profile"
+  - X (Twitter): "Visit X (Twitter) profile"
+  - Facebook: "Visit Facebook profile"
+  - GitHub: "Visit GitHub profile"
+- **Mobile Menu Button**: Enhanced with dynamic ARIA attributes
+  - `aria-label` changes based on menu state (open/close)
+  - `aria-expanded` indicates menu expansion state
+- **Badge Color Scheme**: Updated from bright accents to professional slate monochromatic palette
+  - Increased background opacity from 10% to 25-30% for better visibility
+  - Improved contrast ratio from 4.17:1 to 6.2:1 (exceeds WCAG AA 4.5:1 requirement)
+  - Applied uniformly across 27 badge elements in TechBadge, ProjectCard, and AdminDashboard components
+
+### Fixed
+- **Accessibility Compliance**: Achieved full WCAG 2.1 AA compliance
+  - Fixed link-name violations (8 instances across all viewports)
+  - Fixed ARIA label configuration errors
+  - Fixed keyboard navigation focus issues on desktop/tablet viewports
+  - All 15 accessibility tests now passing
+- **Color Contrast**: All text elements now meet WCAG AA standards (≥4.5:1 ratio)
+- **E2E Test Suite**: Updated internal links test to exclude accessibility-only skip link
+  - All 39 tests passing (15 accessibility + 24 e2e)
+
+### Technical
+- Files modified: `src/App.tsx`, `src/components/TechBadge.tsx`, `src/components/ProjectCard.tsx`, `src/components/AdminDashboard.tsx`, `tests/e2e/portfolio-navigation.spec.ts`
+- Production build verified (171.30 kB JS, 104.21 kB CSS)
+- Zero console errors or network errors on page load
+
 ## [1.1.0] - 2025-12-31
 
 ### Added
@@ -59,5 +96,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version History
 
+- **1.1.1** (2026-01-01): Accessibility compliance (WCAG 2.1 AA) and color scheme improvements
 - **1.1.0** (2025-12-31): Projects section with modern card-based UI
 - **1.0.0** (2025-12-27): Initial portfolio website release
