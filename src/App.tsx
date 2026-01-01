@@ -84,13 +84,15 @@ function Navigation() {
             <button
               className="text-[#f8f7f9] p-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
             <div className="h-8 w-px bg-[#f8f7f9]" />
-            <img 
-              src={logoKarl} 
-              alt="Karl Logo" 
+            <img
+              src={logoKarl}
+              alt="Karl Logo"
               className="h-8 w-8 object-contain cursor-pointer hover:opacity-80 transition-opacity rounded-lg"
               onClick={() => scrollToSection('home')}
             />
@@ -145,6 +147,21 @@ function Navigation() {
 }
 
 function SocialIcon({ type, href }: { type: 'instagram' | 'x' | 'facebook' | 'github'; href: string }) {
+  const getAriaLabel = () => {
+    switch (type) {
+      case 'instagram':
+        return 'Visit Instagram profile';
+      case 'x':
+        return 'Visit X (Twitter) profile';
+      case 'facebook':
+        return 'Visit Facebook profile';
+      case 'github':
+        return 'Visit GitHub profile';
+      default:
+        return 'Visit social media profile';
+    }
+  };
+
   const getPath = () => {
     if (type === 'instagram') {
       return (
@@ -212,6 +229,7 @@ function SocialIcon({ type, href }: { type: 'instagram' | 'x' | 'facebook' | 'gi
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={getAriaLabel()}
       className="text-[#f8f7f9] hover:text-[#f8f7f9]/80 transition-colors duration-200"
     >
       <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24">
@@ -463,10 +481,29 @@ function ContactsSection() {
 }
 
 export default function App() {
+  const skipToMain = () => {
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+      mainContent.focus();
+      mainContent.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="bg-[#1f1f1f] min-h-screen text-white">
+      {/* Skip to main content link for keyboard navigation accessibility */}
+      <a
+        href="#main-content"
+        onClick={(e) => {
+          e.preventDefault();
+          skipToMain();
+        }}
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        Skip to main content
+      </a>
       <Navigation />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <HeroSection />
         <AboutSection />
         <ExperienceSection />
