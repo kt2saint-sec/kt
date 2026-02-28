@@ -33,6 +33,14 @@ const SERVICES = [
 export default function ServicesSection() {
   return (
     <SectionWrapper id="services" bgImage={servicesBg} overlayOpacity={0.7}>
+      {/* Living city effects — neon market */}
+      <div className="city-fx-layer" aria-hidden="true">
+        <div className="services-shop-glow" style={{ top: '10%', left: '5%', width: '100px', height: '80px' }} />
+        <div className="services-shop-glow" style={{ top: '8%', right: '8%', width: '120px', height: '70px', animationDelay: '2s' }} />
+        <div className="services-shop-glow" style={{ top: '15%', left: '45%', width: '90px', height: '60px', animationDelay: '3.5s' }} />
+        <div className="services-rain" />
+      </div>
+
       <div className="max-w-6xl mx-auto">
         <NeonSign text="Services" color="orange" size="xl" as="h2" className="mb-12 text-center" />
 

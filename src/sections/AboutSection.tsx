@@ -19,6 +19,18 @@ const SKILLS = [
 export default function AboutSection() {
   return (
     <SectionWrapper id="about" bgImage={aboutBg} overlayOpacity={0.7}>
+      {/* Living city effects — street level */}
+      <div className="city-fx-layer" aria-hidden="true">
+        <div className="about-steam about-steam--1" />
+        <div className="about-steam about-steam--2" />
+        <div className="about-steam about-steam--3" />
+        <div className="about-steam about-steam--4" />
+        <div className="about-reflection" />
+        <div className="about-ember about-ember--1" />
+        <div className="about-ember about-ember--2" />
+        <div className="about-ember about-ember--3" />
+      </div>
+
       <div className="max-w-6xl mx-auto">
         <NeonSign text="About Me" color="cyan" size="xl" as="h2" className="mb-12 text-center" />
 

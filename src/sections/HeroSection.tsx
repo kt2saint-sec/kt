@@ -26,6 +26,30 @@ export default function HeroSection() {
 
       <FloatingParticles count={25} />
 
+      {/* Living city effects */}
+      <div className="city-fx-layer" aria-hidden="true">
+        {/* Window light clusters */}
+        <div className="hero-window-light hero-window-light--a" style={{ top: '8%', right: '10%', width: '80px', height: '60px' }} />
+        <div className="hero-window-light hero-window-light--b" style={{ top: '15%', right: '25%', width: '100px', height: '50px' }} />
+        <div className="hero-window-light hero-window-light--c" style={{ top: '5%', left: '5%', width: '70px', height: '80px' }} />
+        <div className="hero-window-light hero-window-light--a" style={{ top: '20%', left: '20%', width: '90px', height: '40px', animationDelay: '1.5s' }} />
+        <div className="hero-window-light hero-window-light--b" style={{ top: '12%', right: '45%', width: '60px', height: '70px', animationDelay: '2s' }} />
+        <div className="hero-window-light hero-window-light--c" style={{ top: '25%', left: '60%', width: '110px', height: '45px', animationDelay: '3s' }} />
+
+        {/* Flying cars */}
+        <div className="hero-flying-car hero-flying-car--1" />
+        <div className="hero-flying-car hero-flying-car--2" />
+        <div className="hero-flying-car hero-flying-car--3" />
+        <div className="hero-flying-car hero-flying-car--4" />
+
+        {/* Neon sign glows on buildings */}
+        <div className="hero-neon-sign" style={{ top: '30%', right: '8%', width: '50px', height: '20px', color: 'var(--neon-cyan)' }} />
+        <div className="hero-neon-sign" style={{ top: '22%', left: '8%', width: '40px', height: '15px', color: 'var(--neon-magenta)', animationDelay: '2s' }} />
+
+        {/* Atmospheric haze */}
+        <div className="hero-haze" />
+      </div>
+
       {/* Name + subtitle block — left-aligned together */}
       <div className="absolute z-20 left-[8%] md:left-[12%] lg:left-[15%] top-[18%] md:top-[16%] animate-neon-sign-on">
         <h1

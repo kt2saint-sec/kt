@@ -17,6 +17,26 @@ export default function ContactSection() {
 
   return (
     <SectionWrapper id="contact" bgImage={contactBg} overlayOpacity={0.65}>
+      {/* Living city effects — rooftop view */}
+      <div className="city-fx-layer" aria-hidden="true">
+        {/* City lights twinkling below */}
+        <div className="contact-city-light" style={{ bottom: '15%', left: '10%', background: 'rgba(0, 229, 255, 0.8)', '--dur': '2.5s', '--del': '0s' } as React.CSSProperties} />
+        <div className="contact-city-light" style={{ bottom: '18%', left: '25%', background: 'rgba(255, 0, 153, 0.7)', '--dur': '3.2s', '--del': '0.8s' } as React.CSSProperties} />
+        <div className="contact-city-light" style={{ bottom: '12%', left: '40%', background: 'rgba(255, 215, 0, 0.8)', '--dur': '2.8s', '--del': '1.5s' } as React.CSSProperties} />
+        <div className="contact-city-light" style={{ bottom: '20%', left: '55%', background: 'rgba(0, 229, 255, 0.6)', '--dur': '3.5s', '--del': '0.3s' } as React.CSSProperties} />
+        <div className="contact-city-light" style={{ bottom: '14%', left: '70%', background: 'rgba(255, 107, 0, 0.7)', '--dur': '2.2s', '--del': '2.1s' } as React.CSSProperties} />
+        <div className="contact-city-light" style={{ bottom: '16%', left: '85%', background: 'rgba(255, 0, 153, 0.6)', '--dur': '3.8s', '--del': '1.2s' } as React.CSSProperties} />
+        <div className="contact-city-light" style={{ bottom: '22%', left: '15%', background: 'rgba(255, 255, 255, 0.5)', '--dur': '4s', '--del': '0.5s' } as React.CSSProperties} />
+        <div className="contact-city-light" style={{ bottom: '19%', left: '60%', background: 'rgba(123, 47, 255, 0.7)', '--dur': '2.9s', '--del': '1.8s' } as React.CSSProperties} />
+
+        {/* Drifting cloud */}
+        <div className="contact-cloud" />
+        <div className="contact-cloud" style={{ top: '10%', animationDelay: '15s', width: '200px' }} />
+
+        {/* Distant lightning */}
+        <div className="contact-lightning" />
+      </div>
+
       <div className="max-w-4xl mx-auto">
         <NeonSign text="Contact" color="cyan" size="xl" as="h2" className="mb-12 text-center" />
 
