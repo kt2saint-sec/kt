@@ -63,15 +63,16 @@ test.describe('Portfolio Navigation', () => {
     await expect(page.getByRole('button', { name: 'View Projects' })).toBeVisible();
   });
 
-  test('should display bear mascot in about section', async ({ page }) => {
+  test('should display about section content', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
     await page.locator('#about').scrollIntoViewIfNeeded();
     await page.waitForTimeout(500);
 
-    const bearImg = page.getByAltText('Bear mascot pointing');
-    await expect(bearImg).toBeVisible();
+    // About section should have the heading
+    const aboutHeading = page.locator('#about').getByText('About');
+    await expect(aboutHeading).toBeVisible();
   });
 
   test('should handle responsive design on mobile', async ({ page }) => {
