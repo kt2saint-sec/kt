@@ -23,9 +23,7 @@ export const test = base.extend<AxeFixture>({
   makeAxeBuilder: async ({ page }, use) => {
     const makeAxeBuilder = () =>
       new AxeBuilder({ page })
-        // Optionally configure axe-core rules
-        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
-        .exclude('#some-test-id-to-exclude'); // Example: exclude test elements
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']);
 
     await use(makeAxeBuilder);
   },

@@ -1,105 +1,149 @@
 import { test, expect } from '@playwright/test';
 
 /**
- * E2E Tests for Portfolio Navigation and Interactions
+ * E2E Tests for Neon City Portfolio
  *
- * Tests basic user flows and React component interactions
+ * Tests navigation, section rendering, and core user flows
  */
 
 test.describe('Portfolio Navigation', () => {
   test('should load the homepage successfully', async ({ page }) => {
-    // Navigate to homepage
     await page.goto('/');
-
-    // Wait for page to load
     await page.waitForLoadState('networkidle');
-
-    // Verify page title (adjust based on your actual title)
-    await expect(page).toHaveTitle(/Karl|Portfolio/i);
+    await expect(page).toHaveTitle(/Karl Toussaint/i);
   });
 
-  test('should display main navigation elements', async ({ page }) => {
+  test('should display main navigation with all section links', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Check for common portfolio sections (adjust selectors based on your actual components)
-    const navigation = page.locator('nav').first();
-    await expect(navigation).toBeVisible();
+    const nav = page.locator('nav[aria-label="Main navigation"]');
+    await expect(nav).toBeVisible();
+
+    // On mobile, open hamburger menu first
+    const viewport = page.viewportSize();
+    if (viewport && viewport.width < 768) {
+      const hamburger = nav.getByRole('button', { name: 'Toggle navigation menu' });
+      await hamburger.click();
+    }
+
+    // Verify all nav items exist
+    for (const label of ['Home', 'About', 'Projects', 'Services', 'Contact']) {
+      await expect(nav.getByRole('button', { name: label })).toBeVisible();
+    }
+  });
+
+  test('should navigate to sections via nav buttons', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    // Ensure viewport is wide enough for desktop nav
+    await page.setViewportSize({ width: 1280, height: 720 });
+
+    // Click About nav button
+    const aboutBtn = page.locator('nav').getByRole('button', { name: 'About' });
+    await aboutBtn.waitFor({ state: 'visible', timeout: 5000 });
+    await aboutBtn.click();
+    await page.waitForTimeout(1000);
+
+    // About section should be scrolled into view
+    const aboutSection = page.locator('#about');
+    await expect(aboutSection).toBeAttached();
+  });
+
+  test('should render hero section with name and CTAs', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    // Wait for animations to complete
+    await page.waitForTimeout(3000);
+
+    await expect(page.getByRole('heading', { name: 'Karl Toussaint', level: 1 })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'About Me' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'View Projects' })).toBeVisible();
+  });
+
+  test('should display bear mascot in about section', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    await page.locator('#about').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+
+    const bearImg = page.getByAltText('Bear mascot pointing');
+    await expect(bearImg).toBeVisible();
   });
 
   test('should handle responsive design on mobile', async ({ page }) => {
-    // Set mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
-
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Verify page renders on mobile
-    const body = page.locator('body');
-    await expect(body).toBeVisible();
+    // Body renders
+    await expect(page.locator('body')).toBeVisible();
+
+    // Name is still visible
+    await page.waitForTimeout(3000);
+    await expect(page.getByRole('heading', { name: 'Karl Toussaint', level: 1 })).toBeVisible();
   });
 
-  test('should support dark mode toggle (if implemented)', async ({ page }) => {
+  test('should have skip link for keyboard navigation', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Look for theme toggle button (common in portfolios)
-    const themeToggle = page.locator('[aria-label*="theme"], [aria-label*="dark"], button:has-text("Theme")').first();
-
-    // If theme toggle exists, test it
-    const toggleExists = await themeToggle.count();
-    if (toggleExists > 0) {
-      await themeToggle.click();
-      // Verify theme change (adjust based on your implementation)
-      const html = page.locator('html');
-      const isDark = await html.evaluate((el) =>
-        el.classList.contains('dark') || el.getAttribute('data-theme') === 'dark'
-      );
-      expect(isDark).toBeTruthy();
-    }
+    const skipLink = page.locator('a[href="#main-content"]');
+    await expect(skipLink).toHaveCount(1);
   });
 
   test('should have working internal links', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Find first internal link (excluding skip link which is sr-only)
-    const firstLink = page.locator('a[href^="/"], a[href^="#"]:not([href="#main-content"])').first();
-
-    const linkExists = await firstLink.count();
-    if (linkExists > 0) {
-      const href = await firstLink.getAttribute('href');
-
-      // If it's a hash link (same page), verify scroll behavior
-      if (href?.startsWith('#')) {
-        await firstLink.click();
-        await page.waitForTimeout(500); // Wait for smooth scroll
-        expect(page.url()).toContain(href);
-      }
-    }
+    // KT logo link goes home
+    const logoLink = page.locator('a[href="/"]').first();
+    await expect(logoLink).toBeVisible();
   });
 });
 
-test.describe('Portfolio Components', () => {
-  test('should render Radix UI components correctly', async ({ page }) => {
+test.describe('Portfolio Sections', () => {
+  test('should render all five main sections', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Check for Radix UI data attributes (they add data-radix-* attributes)
-    const radixComponents = page.locator('[data-radix-collection-item], [data-state], [data-orientation]');
-    const count = await radixComponents.count();
-
-    // If Radix components exist, verify they're accessible
-    if (count > 0) {
-      const firstComponent = radixComponents.first();
-      await expect(firstComponent).toBeVisible();
+    for (const id of ['home', 'about', 'projects', 'services', 'contact']) {
+      await expect(page.locator(`#${id}`)).toBeAttached();
     }
+  });
+
+  test('should render project cards with links', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    // Scroll to projects
+    await page.locator('#projects').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+
+    // At least one project link should exist
+    const projectLinks = page.locator('a[href^="/project/"]');
+    expect(await projectLinks.count()).toBeGreaterThan(0);
+  });
+
+  test('should render contact form with required fields', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    await page.locator('#contact').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+
+    await expect(page.getByLabel('Name')).toBeVisible();
+    await expect(page.getByLabel('Email')).toBeVisible();
+    await expect(page.getByLabel('Message')).toBeVisible();
+    await expect(page.getByRole('button', { name: "Let's Build Something" })).toBeVisible();
   });
 
   test('should have no console errors on page load', async ({ page }) => {
     const consoleErrors: string[] = [];
 
-    // Listen for console errors
     page.on('console', (msg) => {
       if (msg.type() === 'error') {
         consoleErrors.push(msg.text());
@@ -109,14 +153,16 @@ test.describe('Portfolio Components', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Verify no errors
-    expect(consoleErrors).toEqual([]);
+    // Filter out React DevTools message which is informational
+    const realErrors = consoleErrors.filter(
+      (e) => !e.includes('Download the React DevTools')
+    );
+    expect(realErrors).toEqual([]);
   });
 
   test('should load without network errors', async ({ page }) => {
     const failedRequests: string[] = [];
 
-    // Listen for failed network requests
     page.on('response', (response) => {
       if (!response.ok() && response.status() >= 400) {
         failedRequests.push(`${response.status()} ${response.url()}`);
@@ -126,7 +172,6 @@ test.describe('Portfolio Components', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Verify no failed requests
     expect(failedRequests).toEqual([]);
   });
 });

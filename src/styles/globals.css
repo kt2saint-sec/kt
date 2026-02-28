@@ -1,270 +1,364 @@
 @import "tailwindcss";
+@import "./neon-animations.css";
 
-@custom-variant dark (&:is(.dark *));
+/* ============================================
+   Custom Font: BlowBrush (hip-hop brush style)
+   ============================================ */
+@font-face {
+  font-family: 'BlowBrush';
+  src: url('../assets/fonts/blowbrush.woff2') format('woff2'),
+       url('../assets/fonts/blowbrush.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   NEON CITY PORTFOLIO — Global Theme
+   ============================================ */
 
 :root {
-  --font-size: 14px;
-  --background: #ffffff;
-  --foreground: oklch(0.145 0 0);
-  --card: #ffffff;
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: #030213;
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.0058 264.53);
-  --secondary-foreground: #030213;
-  --muted: #ececf0;
-  --muted-foreground: #717182;
-  --accent: #e9ebef;
-  --accent-foreground: #030213;
-  --destructive: #d4183d;
-  --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.1);
-  --input: transparent;
-  --input-background: #f3f3f5;
-  --switch-background: #cbced4;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  /* Neon Color Palette */
+  --neon-cyan: #00e5ff;
+  --neon-magenta: #ff0099;
+  --neon-orange: #ff6b00;
+  --neon-purple: #7b2fff;
+  --neon-gold: #ffd700;
+  --neon-red: #ff2d2d;
+
+  /* Backgrounds */
+  --bg-dark: #0a0612;
+  --bg-street: #1a0e2e;
+  --bg-card: rgba(10, 6, 18, 0.7);
+
+  /* Text */
+  --text-white: #f0eff4;
+  --text-muted: #a0a0b8;
+  --text-glow: #00e5ff;
+
+  /* Borders */
+  --border-neon: rgba(0, 229, 255, 0.3);
+  --border-subtle: rgba(123, 47, 255, 0.2);
+
+  /* Typography */
+  --font-display: 'Bebas Neue', 'Oswald', sans-serif;
+  --font-body: 'Inter', 'Space Grotesk', sans-serif;
+
+  /* Spacing / Radius */
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: #030213;
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
-}
-
+/* ============================================
+   Tailwind v4 Theme Mapping
+   ============================================ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-input-background: var(--input-background);
-  --color-switch-background: var(--switch-background);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-magenta: var(--neon-magenta);
+  --color-neon-orange: var(--neon-orange);
+  --color-neon-purple: var(--neon-purple);
+  --color-neon-gold: var(--neon-gold);
+  --color-neon-red: var(--neon-red);
+  --color-bg-dark: var(--bg-dark);
+  --color-bg-street: var(--bg-street);
+  --color-bg-card: var(--bg-card);
+  --color-text-white: var(--text-white);
+  --color-text-muted: var(--text-muted);
+  --color-text-glow: var(--text-glow);
+  --color-border-neon: var(--border-neon);
+  --color-border-subtle: var(--border-subtle);
+  --font-family-display: var(--font-display);
+  --font-family-body: var(--font-body);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* ============================================
+   Base Styles
+   ============================================ */
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(0, 229, 255, 0.3);
+    color: #fff;
+  }
+
+  /* Focus visible for keyboard nav */
+  :focus-visible {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 2px;
   }
 }
 
-/**
-Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
- */
-@layer base {
-  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
-    h1 {
-      font-size: var(--text-2xl);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-    }
+/* ============================================
+   Neon Utility Classes
+   ============================================ */
 
-    h2 {
-      font-size: var(--text-xl);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-    }
+/* Neon text glow */
+.neon-text {
+  text-shadow:
+    0 0 7px var(--neon-cyan),
+    0 0 10px var(--neon-cyan),
+    0 0 21px var(--neon-cyan),
+    0 0 42px var(--neon-cyan);
+}
 
-    h3 {
-      font-size: var(--text-lg);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-    }
+.neon-text-magenta {
+  text-shadow:
+    0 0 7px var(--neon-magenta),
+    0 0 10px var(--neon-magenta),
+    0 0 21px var(--neon-magenta);
+}
 
-    h4 {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-    }
+.neon-text-orange {
+  text-shadow:
+    0 0 7px var(--neon-orange),
+    0 0 10px var(--neon-orange),
+    0 0 21px var(--neon-orange);
+}
 
-    p {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-normal);
-      line-height: 1.5;
-    }
+/* Neon border card — glassmorphism */
+.neon-card {
+  border: 1px solid var(--border-neon);
+  box-shadow:
+    0 0 15px rgba(0, 229, 255, 0.1),
+    inset 0 0 15px rgba(0, 229, 255, 0.05);
+  backdrop-filter: blur(10px);
+  background: var(--bg-card);
+  border-radius: var(--radius);
+}
 
-    label {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-    }
+.neon-card:hover {
+  box-shadow:
+    0 0 25px rgba(0, 229, 255, 0.2),
+    inset 0 0 25px rgba(0, 229, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.5);
+}
 
-    button {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-    }
+/* Neon button glow */
+.neon-btn {
+  position: relative;
+  border: 1px solid var(--neon-cyan);
+  background: transparent;
+  color: var(--neon-cyan);
+  padding: 0.75rem 2rem;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
 
-    input {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-normal);
-      line-height: 1.5;
-    }
+.neon-btn:hover {
+  background: rgba(0, 229, 255, 0.1);
+  box-shadow:
+    0 0 20px rgba(0, 229, 255, 0.4),
+    inset 0 0 20px rgba(0, 229, 255, 0.1);
+  text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.neon-btn-magenta {
+  border-color: var(--neon-magenta);
+  color: var(--neon-magenta);
+  box-shadow: 0 0 10px rgba(255, 0, 153, 0.2);
+}
+
+.neon-btn-magenta:hover {
+  background: rgba(255, 0, 153, 0.1);
+  box-shadow:
+    0 0 20px rgba(255, 0, 153, 0.4),
+    inset 0 0 20px rgba(255, 0, 153, 0.1);
+  text-shadow: 0 0 8px var(--neon-magenta);
+}
+
+/* Neon input fields */
+.neon-input {
+  background: rgba(10, 6, 18, 0.6);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-white);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  transition: all 0.3s ease;
+}
+
+.neon-input:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+  outline: none;
+}
+
+.neon-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ============================================
+   Parallax Container
+   ============================================ */
+.parallax-container {
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.parallax-layer-far {
+  transform: translateZ(-3px) scale(4);
+}
+
+.parallax-layer-mid {
+  transform: translateZ(-2px) scale(3);
+}
+
+.parallax-layer-near {
+  transform: translateZ(-1px) scale(2);
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }
 
-html {
-  font-size: var(--font-size);
+/* ============================================
+   Hero Name — Orbitron cyberpunk font
+   ============================================ */
+.hero-name {
+  font-family: 'Orbitron', 'Bebas Neue', sans-serif;
+  font-weight: 900;
+  color: #ffffff;
+  -webkit-text-stroke: 1px rgba(0, 229, 255, 0.3);
+  paint-order: stroke fill;
+  text-shadow:
+    0 0 10px rgba(0, 229, 255, 0.3),
+    0 0 30px rgba(0, 229, 255, 0.1),
+    2px 2px 0 #0d1b4a,
+    -2px -2px 0 #0d1b4a,
+    2px -2px 0 #0d1b4a,
+    -2px 2px 0 #0d1b4a;
 }
 
-/* Animated Background Effects */
-@keyframes wave1 {
-  0%, 100% {
-    transform: translateX(0) translateY(0);
-  }
-  50% {
-    transform: translateX(-25px) translateY(-10px);
-  }
-}
-
-@keyframes wave2 {
-  0%, 100% {
-    transform: translateX(0) translateY(0);
-  }
-  50% {
-    transform: translateX(25px) translateY(-15px);
-  }
-}
-
-@keyframes wave3 {
-  0%, 100% {
-    transform: translateX(0) translateY(0);
-  }
-  50% {
-    transform: translateX(-20px) translateY(-8px);
-  }
-}
-
-@keyframes smokeString1 {
-  0%, 100% {
-    transform: translateY(0) translateX(0);
-    opacity: 0.2;
-  }
-  25% {
-    opacity: 0.4;
-  }
-  50% {
-    transform: translateY(-30px) translateX(20px);
-    opacity: 0.3;
-  }
-  75% {
-    opacity: 0.25;
+@media (min-width: 768px) {
+  .hero-name {
+    -webkit-text-stroke: 1.5px rgba(0, 229, 255, 0.3);
+    text-shadow:
+      0 0 15px rgba(0, 229, 255, 0.4),
+      0 0 40px rgba(0, 229, 255, 0.15),
+      3px 3px 0 #0d1b4a,
+      -3px -3px 0 #0d1b4a,
+      3px -3px 0 #0d1b4a,
+      -3px 3px 0 #0d1b4a;
   }
 }
 
-@keyframes smokeString2 {
-  0%, 100% {
-    transform: translateY(0) translateX(0) scaleX(1);
-    opacity: 0.2;
+/* Hero subtitle — Rajdhani complementary font */
+.hero-subtitle {
+  font-family: 'Rajdhani', 'Bebas Neue', sans-serif;
+  font-weight: 700;
+}
+
+/* Orbitron font for section headings (NeonSign) */
+.hero-name-font {
+  font-family: 'Orbitron', 'Bebas Neue', sans-serif;
+  font-weight: 700;
+}
+
+/* ============================================
+   Mobile Performance Optimization
+   ============================================ */
+@media (max-width: 768px) {
+  .neon-text {
+    text-shadow:
+      0 0 7px var(--neon-cyan),
+      0 0 15px var(--neon-cyan);
   }
-  33% {
-    opacity: 0.35;
+
+  .neon-text-magenta {
+    text-shadow:
+      0 0 7px var(--neon-magenta),
+      0 0 15px var(--neon-magenta);
   }
-  50% {
-    transform: translateY(25px) translateX(-15px) scaleX(1.1);
-    opacity: 0.3;
+
+  .neon-text-orange {
+    text-shadow:
+      0 0 7px var(--neon-orange),
+      0 0 15px var(--neon-orange);
   }
-  66% {
-    opacity: 0.25;
+
+  .neon-card {
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.08);
+  }
+
+  .neon-card:hover {
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+  }
+
+  .neon-btn:hover {
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+  }
+
+  .neon-btn-magenta:hover {
+    box-shadow: 0 0 12px rgba(255, 0, 153, 0.3);
   }
 }
 
-@keyframes smokeString3 {
-  0%, 100% {
-    transform: translateY(0) translateX(0);
-    opacity: 0.15;
-  }
-  40% {
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateY(-20px) translateX(30px);
-    opacity: 0.25;
-  }
-  60% {
-    opacity: 0.2;
-  }
+/* GPU hints for animated elements */
+.animate-gentle-float,
+.animate-city-reveal,
+.animate-neon-sign-on,
+.animate-slide-up,
+.animate-float-particle {
+  will-change: transform, opacity;
+}
+
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 229, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 255, 0.5);
 }

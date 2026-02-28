@@ -1,0 +1,309 @@
+/* ============================================
+   NEON CITY PORTFOLIO — Animation Keyframes
+   Pure CSS3 animations — no JS libraries
+   ============================================ */
+
+/* Neon sign flicker — realistic tube effect */
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.4;
+  }
+}
+
+/* Subtle glow pulse */
+@keyframes neon-pulse {
+  0%, 100% {
+    filter: brightness(1);
+    text-shadow:
+      0 0 7px var(--neon-cyan),
+      0 0 10px var(--neon-cyan),
+      0 0 21px var(--neon-cyan);
+  }
+  50% {
+    filter: brightness(1.2);
+    text-shadow:
+      0 0 10px var(--neon-cyan),
+      0 0 20px var(--neon-cyan),
+      0 0 40px var(--neon-cyan),
+      0 0 60px var(--neon-cyan);
+  }
+}
+
+/* Floating particle drift */
+@keyframes float-particle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+/* Cinematic fade in from dark */
+@keyframes cinematic-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide up reveal */
+@keyframes slide-up-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide in from left */
+@keyframes slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide in from right */
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Hero window light reveal */
+@keyframes window-light-reveal {
+  0% {
+    opacity: 0;
+    filter: brightness(0);
+  }
+  40% {
+    opacity: 0.6;
+    filter: brightness(0.4);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+/* City reveal behind window */
+@keyframes city-reveal {
+  0% {
+    transform: scale(1.05);
+    filter: blur(8px) brightness(0.3);
+  }
+  60% {
+    filter: blur(2px) brightness(0.8);
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0) brightness(1);
+  }
+}
+
+/* Name neon sign power-on */
+@keyframes neon-sign-on {
+  0% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  10% {
+    opacity: 0.5;
+    text-shadow: 0 0 4px var(--neon-cyan);
+  }
+  12% {
+    opacity: 0.2;
+  }
+  14% {
+    opacity: 0.7;
+    text-shadow: 0 0 8px var(--neon-cyan);
+  }
+  16% {
+    opacity: 0.3;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  25% {
+    opacity: 0.6;
+  }
+  30% {
+    opacity: 1;
+    text-shadow:
+      0 0 7px var(--neon-cyan),
+      0 0 10px var(--neon-cyan),
+      0 0 21px var(--neon-cyan),
+      0 0 42px var(--neon-cyan);
+  }
+  100% {
+    opacity: 1;
+    text-shadow:
+      0 0 7px var(--neon-cyan),
+      0 0 10px var(--neon-cyan),
+      0 0 21px var(--neon-cyan),
+      0 0 42px var(--neon-cyan);
+  }
+}
+
+/* Card border glow on hover */
+@keyframes border-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
+  }
+}
+
+/* Billboard light up */
+@keyframes billboard-light-up {
+  0% {
+    filter: brightness(0.6);
+  }
+  100% {
+    filter: brightness(1.1);
+  }
+}
+
+/* Gentle float for bear mascot */
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Scroll-driven section reveal — uses animation-timeline where supported */
+@keyframes section-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Animation Utility Classes
+   ============================================ */
+
+.animate-neon-flicker {
+  animation: neon-flicker 3s infinite;
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+
+.animate-float-particle {
+  animation: float-particle var(--duration, 8s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.animate-cinematic-fade {
+  animation: cinematic-fade-in 1.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up-reveal 0.8s ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slide-in-left 0.8s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slide-in-right 0.8s ease-out forwards;
+}
+
+.animate-window-reveal {
+  animation: window-light-reveal 2s ease-out forwards;
+}
+
+.animate-city-reveal {
+  animation: city-reveal 1.5s ease-out 0.2s forwards;
+}
+
+.animate-neon-sign-on {
+  animation: neon-sign-on 1.5s ease-out 0.8s forwards;
+  opacity: 0;
+}
+
+.animate-gentle-float {
+  animation: gentle-float 4s ease-in-out infinite;
+}
+
+.animate-billboard-light {
+  animation: billboard-light-up 0.3s ease-out forwards;
+}
+
+/* CSS scroll-driven reveal for browsers that support animation-timeline */
+@supports (animation-timeline: scroll()) {
+  .scroll-driven-reveal {
+    animation: section-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+}
+
+/* Horizontal scroll hint */
+@keyframes slide-right-hint {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(12px);
+    opacity: 1;
+  }
+}
+
+/* Page turn shadow effect */
+@keyframes page-turn-shadow {
+  0% {
+    box-shadow: -20px 0 40px rgba(0, 0, 0, 0.8);
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+
+/* Stagger delays for children */
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
